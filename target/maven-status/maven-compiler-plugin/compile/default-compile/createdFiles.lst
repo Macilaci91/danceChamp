@@ -1,0 +1,5 @@
+com\example\DanceDbRest\DanceDbRestApplication.class
+com\example\DanceDbRest\Csoport.class
+com\example\DanceDbRest\CsoportCtrl.class
+com\example\DanceDbRest\CsoportRepo.class
+com\example\DanceDbRest\CsoportInterface.class

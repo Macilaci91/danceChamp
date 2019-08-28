@@ -1,0 +1,31 @@
+version: '2.2'
+
+services:
+  dancedb:
+    volumes:
+     - ./db:/docker-entrypoint-initdb.d
+    image: mysql
+    ports:
+    - "2014:3306"
+    restart: always
+    command: --lower_case_table_names=1
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=dancechampionship
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user123
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  dancerest:
+    image: dancetest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      dancedb:
+        condition: service_healthy
+    ports:
+      - 8087:8080
