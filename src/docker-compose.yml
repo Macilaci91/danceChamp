@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  dancedb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=dancechampionship
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+    volumes:
+     - ./sql/dance.sql:/docker-entrypoint-initdb.d/dance.sql
+    environment:
+     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  dancerest:
+    image: dancetest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - dancedb
+    ports:
+      - 8087:8080
