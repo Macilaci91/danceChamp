@@ -5,4 +5,4 @@ jobs:
     working_directory: ~/apptest
     steps:
       - checkout
-      - run: docker-compose up -d
+      - run: docker-compose up
