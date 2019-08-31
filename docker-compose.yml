@@ -20,7 +20,6 @@ services:
       timeout: 50s
       retries: 15
       interval: 20s
-      start_period: 40s 
   dancerest:
     image: dancetest
     build:
@@ -29,5 +28,7 @@ services:
     depends_on:
       dancedb:
         condition: service_healthy
+    healthcheck:
+      start_period: 40s 
     ports:
       - 8087:8080
