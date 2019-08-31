@@ -1,9 +1,9 @@
 version: 2
 jobs: 
-	build:
-		working_directory: ~/tmp
-		docker:
-			- image: circleci/openjdk:8-jdk
-		steps:
-			- checkout
-			- docker-compose up
+  build:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - docker-compose up
