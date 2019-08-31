@@ -6,4 +6,4 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - docker-compose up
+      - run: docker-compose up
