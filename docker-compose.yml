@@ -19,6 +19,8 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 50s
       retries: 15
+      interval: 20s
+      start_period: 40s 
   dancerest:
     image: dancetest
     build:
