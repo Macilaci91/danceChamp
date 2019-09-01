@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=user123
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     healthcheck:
-      test: mysql --user=root --password=root123 -e 'SELECT * FROM csoport'
+      test: ["CMD", "curl", "-f", "http://dancedb:3306/"]
       timeout: 50s
       retries: 15
       interval: 20s
