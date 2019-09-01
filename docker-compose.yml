@@ -25,7 +25,7 @@ services:
     links:
       - dancedb
     healthcheck:
-      test: "/usr/bin/mysql --user=user --password=user123 --execute \"SHOW DATABASES;\"
+      test: "/usr/bin/mysql --user=user --password=user123 --execute \"SHOW DATABASES;\""
       timeout: 50s1
       retries: 15
       interval: 20s
