@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=user123
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "curl", "-sL", "-I", "localhost:3306/ping"]
       timeout: 50s
       retries: 15
       interval: 20s
