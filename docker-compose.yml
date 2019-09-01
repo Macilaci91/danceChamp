@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8087:8080
-    link:
+    links:
       - dancedb
     healthcheck:
       test: ["CMD", "curl", "-f", "http://dancedb:3306/"]
