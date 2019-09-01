@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=user123
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["curl", "-sL", "-I","localhost:3306/ping"]
       timeout: 50s
       retries: 15
       interval: 20s
@@ -27,8 +27,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       dancedb:
-        condition: service_healthy
-    healthcheck:
-      start_period: 40s 
+        condition: service_healthy 
     ports:
       - 8087:8080
