@@ -15,17 +15,18 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=user123
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=user123 --execute \"SHOW DATABASES;\""
+      timeout: 50s
+      retries: 15
+      interval: 20s
   dancerest:
     image: dancetest
     build:
       context: ./
       dockerfile: Dockerfile
+    depends_on:
+      dancedb:
+        condition: service_healthy 
     ports:
       - 8087:8080
-    links:
-      - dancedb
-    healthcheck:
-      test: "/usr/bin/mysql --user=user --password=user123 --execute \"SHOW DATABASES;\""
-      timeout: 50s1
-      retries: 15
-      interval: 20s
