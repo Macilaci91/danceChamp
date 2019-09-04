@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=user123
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     healthcheck:
-      test: "/usr/bin/mysql --user=user --password=user123 --execute \"SHOW DATABASES;\""
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 50s
       retries: 15
       interval: 20s
